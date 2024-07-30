@@ -3,34 +3,49 @@ package ex5;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class Inventaire.
+ */
 public class Inventaire {
 
-	private List<Caisse> caisses;
+    private static final int MAX_WEIGHT = Integer.MAX_VALUE;
 
-	public Inventaire() {
-		caisses = new ArrayList<>();
-		caisses.add(new Caisse("Petits objets"));
-		caisses.add(new Caisse("Moyens objets"));
-		caisses.add(new Caisse("Grands objets"));
-	}
+    private List<Caisse> caisses;
 
-	public void addItem(Item item) {
+    /**
+     * Instantiates a new Inventaire.
+     */
+    public Inventaire() {
+        caisses = new ArrayList<>();
+        caisses.add(new Caisse("Petits objets", 5, 0));
+        caisses.add(new Caisse("Moyens objets", 20, 5));
+        caisses.add(new Caisse("Grands objets", MAX_WEIGHT, 20));
+    }
 
-		//TODO Faites évoluer ce code (idée: c'est le caisse qui doit "savoir" si elle peut accepter un objet ou non)
-		if (item.getPoids() < 5) {
-			caisses.get(0).getItems().add(item);
-		}
-		if (item.getPoids() >= 5 && item.getPoids() <= 20) {
-			caisses.get(1).getItems().add(item);
-		}
-		if (item.getPoids() >= 20) {
-			caisses.get(2).getItems().add(item);
-		}
-	}
+    /**
+     * Add item.
+     *
+     * @param item the item
+     */
+    public void addItem(Item item) {
+        for (Caisse caisse : caisses) {
+            if (item.getPoids() < caisse.getPoidsMax() && item.getPoids() > caisse.getPoidsMin()) {
+                caisse.addItem(item);
+                break;
+            }
+        }
+    }
 
-	public int taille() {
-		
-		//TODO faites évoluer ce code.
-		return caisses.get(0).getItems().size() + caisses.get(1).getItems().size() + caisses.get(2).getItems().size();
-	}
+    /**
+     * Taille int.
+     *
+     * @return the int
+     */
+    public int taille() {
+        Integer size = 0;
+        for (Caisse caisse : caisses) {
+            size += caisse.getItems().size();
+        }
+        return size;
+    }
 }

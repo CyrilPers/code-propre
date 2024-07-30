@@ -1,29 +1,47 @@
 package ex3;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Ferme reptile.
+ */
 public class FermeReptile {
 
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
-	
-	public void addAnimal(String typeAnimal, String nomAnimal, String comportement) {
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
+	private List<Reptile> reptiles = new ArrayList<Reptile>();
+
+	/**
+	 * Add animal.
+	 *
+	 * @param reptile the reptile
+	 */
+	public void addAnimal(Reptile reptile) {
+		reptiles.add(reptile);
 	}
-	
+
+	/**
+	 * Afficher liste animaux.
+	 */
 	public void afficherListeAnimaux(){
-		for (String nom: noms){
-			System.out.println(nom);
+		for (Reptile reptile: reptiles){
+			System.out.println(reptile.getNom());
 		}
 	}
-	
+
+	/**
+	 * Compter animaux int.
+	 *
+	 * @return the int
+	 */
 	public int compterAnimaux(){
-		return noms.size();
+		return reptiles.size();
 	}
-	
+
+	/**
+	 * Calculer kgs nourriture par jour double.
+	 *
+	 * @return the double
+	 */
 	public double calculerKgsNourritureParJour(){
-		return noms.size() * 0.1;
+		return reptiles.size() * 0.1;
 	}
 }
