@@ -15,4 +15,9 @@ public class FermeReptile extends Zone<Reptile> {
 	public double calculerKgsNourritureParJour(){
 		return this.getAnimals().size() * 0.1;
 	}
+
+	@Override
+	public boolean accept(Animal animal) {
+		return animal instanceof Reptile;
+	}
 }

@@ -1,85 +1,76 @@
 package ex3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type Zoo.
  */
-public class Zoo {
+public class Zoo<T extends Zone> {
 
-	private String nom;
-	private SavaneAfricaine savaneAfricaine;
-	private ZoneCarnivore zoneCarnivore;
-	private FermeReptile fermeReptile;
-	private Aquarium aquarium;
+    private String nom;
+    private List<T> zones = new ArrayList<T>();
 
-	/**
-	 * Instantiates a new Zoo.
-	 *
-	 * @param nom the nom
-	 */
-	public Zoo(String nom){
-		this.nom = nom;
-		this.savaneAfricaine = new SavaneAfricaine();
-		this.zoneCarnivore = new ZoneCarnivore();
-		this.fermeReptile = new FermeReptile();
-		this.aquarium = new Aquarium();
-	}
+    /**
+     * Instantiates a new Zoo.
+     *
+     * @param nom the nom
+     */
+    public Zoo(String nom) {
+        this.nom = nom;
+        this.zones.add((T) new SavaneAfricaine());
+        this.zones.add((T) new ZoneCarnivore());
+        this.zones.add((T) new FermeReptile());
+        this.zones.add((T) new Aquarium());
+    }
 
-	/**
-	 * Afficher liste animaux.
-	 */
-	public void afficherListeAnimaux(){
-		savaneAfricaine.afficherListeAnimaux();
-		zoneCarnivore.afficherListeAnimaux();
-		fermeReptile.afficherListeAnimaux();
-		aquarium.afficherListeAnimaux();
-	}
+    /**
+     * Afficher liste animaux.
+     */
+    public void afficherListeAnimaux() {
+        for (T zone : zones) {
+            zone.afficherListeAnimaux();
+        }
+    }
 
-	/** Getter for nom
-	 * @return the nom
-	 */
-	public String getNom() {
-		return nom;
-	}
+    public List<T> getZones() {
+        return zones;
+    }
 
-	/**
-	 * Setter
-	 *
-	 * @param nom the nom to set
-	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public void setZones(List<T> zones) {
+        this.zones = zones;
+    }
 
+    /**
+     * Getter for nom
+     *
+     * @return the nom
+     */
+    public String getNom() {
+        return nom;
+    }
 
-	/**
-	 * Add animal.
-	 *
-	 * @param mammifere the mammifere
-	 */
-	public void addAnimal(Mammifere mammifere) {
-		if (mammifere.getComportement().equals(Comportement.HERBIVORE)){
-			savaneAfricaine.addAnimal(mammifere);
-		}
-		else if (mammifere.getComportement().equals(Comportement.CARNIVORE)){
-			zoneCarnivore.addAnimal(mammifere);
-		}
-	}
+    /**
+     * Setter
+     *
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	/**
-	 * Add animal.
-	 *
-	 * @param requin the requin
-	 */
-	public void addAnimal(Poisson requin) {
-		aquarium.addAnimal(requin);
-	}
+    /**
+     * Add animal.
+     *
+     * @param animal
+     */
+    public void addAnimal(Animal animal) {
+        for (T zone : zones) {
+            if (zone.accept(animal)) {
+                zone.addAnimal(animal);
+                break;
+            }
+        }
+    }
 
-	/**
-	 * Add animal.
-	 *
-	 * @param boa the boa
-	 */
-	public void addAnimal(Reptile boa) {
-		fermeReptile.addAnimal(boa);
-	}
 }

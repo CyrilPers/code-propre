@@ -13,4 +13,9 @@ public class Aquarium extends Zone<Poisson> {
 	public double calculerKgsNourritureParJour(){
 		return this.getAnimals().size() * 0.2;
 	}
+
+	@Override
+	public boolean accept(Animal animal) {
+		return animal instanceof Poisson;
+	}
 }

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public abstract class Zone<T extends Animal> {
     private List<T> animals = new ArrayList<T>();
-
+    private String nom;
     /**
      * Gets animals.
      *
@@ -54,5 +54,9 @@ public abstract class Zone<T extends Animal> {
      */
     public double calculerKgsNourritureParJour(){
         return animals.size();
+    }
+
+    public boolean accept(Animal animal) {
+        return false;
     }
 }

@@ -14,4 +14,9 @@ public class SavaneAfricaine extends Zone<Mammifere> {
 	public double calculerKgsNourritureParJour(){
 		return this.getAnimals().size() * 10;
 	}
+
+	@Override
+	public boolean accept(Animal animal) {
+		return animal instanceof Mammifere && animal.getComportement().equals(Comportement.HERBIVORE);
+	}
 }
