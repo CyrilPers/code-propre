@@ -3,7 +3,7 @@ package ex3;
 /**
  * The type Zone carnivore.
  */
-public class ZoneCarnivore extends Zone<Mammifere> {
+public class ZoneCarnivore extends Zone{
 	/**
 	 * Calculer kgs nourriture par jour double.
 	 *

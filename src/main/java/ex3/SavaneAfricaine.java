@@ -3,7 +3,7 @@ package ex3;
 /**
  * The type Savane africaine.
  */
-public class SavaneAfricaine extends Zone<Mammifere> {
+public class SavaneAfricaine extends Zone {
 
 	/**
 	 * Calculer kgs nourriture par jour int.

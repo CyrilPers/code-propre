@@ -6,17 +6,16 @@ import java.util.List;
 /**
  * The type Zone.
  *
- * @param <T> the type parameter
  */
-public abstract class Zone<T extends Animal> {
-    private List<T> animals = new ArrayList<T>();
+public abstract class Zone {
+    private List<Animal> animals = new ArrayList<>();
     private String nom;
     /**
      * Gets animals.
      *
      * @return the animals
      */
-    public List<T> getAnimals() {
+    public List<Animal> getAnimals() {
         return animals;
     }
 
@@ -25,7 +24,7 @@ public abstract class Zone<T extends Animal> {
      *
      * @param animals the animals
      */
-    public void setAnimals(List<T> animals) {
+    public void setAnimals(List<Animal> animals) {
         this.animals = animals;
     }
 
@@ -34,7 +33,7 @@ public abstract class Zone<T extends Animal> {
      *
      * @param animal the animal
      */
-    public void addAnimal(T animal) {
+    public void addAnimal(Animal animal) {
         animals.add(animal);
     }
 
@@ -42,7 +41,7 @@ public abstract class Zone<T extends Animal> {
      * Afficher liste animaux.
      */
     public void afficherListeAnimaux(){
-        for (T animal: animals){
+        for (Animal animal: animals){
             System.out.println(animal.getNom());
         }
     }

@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * The type Zoo.
  */
-public class Zoo<T extends Zone> {
+public class Zoo {
 
     private String nom;
-    private List<T> zones = new ArrayList<T>();
+    private List<Zone> zones = new ArrayList<>();
 
     /**
      * Instantiates a new Zoo.
@@ -18,26 +18,26 @@ public class Zoo<T extends Zone> {
      */
     public Zoo(String nom) {
         this.nom = nom;
-        this.zones.add((T) new SavaneAfricaine());
-        this.zones.add((T) new ZoneCarnivore());
-        this.zones.add((T) new FermeReptile());
-        this.zones.add((T) new Aquarium());
+        this.zones.add(new SavaneAfricaine());
+        this.zones.add(new ZoneCarnivore());
+        this.zones.add(new FermeReptile());
+        this.zones.add(new Aquarium());
     }
 
     /**
      * Afficher liste animaux.
      */
     public void afficherListeAnimaux() {
-        for (T zone : zones) {
+        for (Zone zone : zones) {
             zone.afficherListeAnimaux();
         }
     }
 
-    public List<T> getZones() {
+    public List<Zone> getZones() {
         return zones;
     }
 
-    public void setZones(List<T> zones) {
+    public void setZones(List<Zone> zones) {
         this.zones = zones;
     }
 
@@ -65,7 +65,7 @@ public class Zoo<T extends Zone> {
      * @param animal
      */
     public void addAnimal(Animal animal) {
-        for (T zone : zones) {
+        for (Zone zone : zones) {
             if (zone.accept(animal)) {
                 zone.addAnimal(animal);
                 break;

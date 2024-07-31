@@ -2,7 +2,7 @@ package ex3;
 /**
  * The type Aquarium.
  */
-public class Aquarium extends Zone<Poisson> {
+public class Aquarium extends Zone {
 
 	/**
 	 * Calculer kgs nourriture par jour double.

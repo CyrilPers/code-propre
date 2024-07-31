@@ -3,7 +3,7 @@ package ex3;
 /**
  * The type Ferme reptile.
  */
-public class FermeReptile extends Zone<Reptile> {
+public class FermeReptile extends Zone {
 
 
 	/**
